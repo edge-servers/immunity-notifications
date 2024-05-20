@@ -1,23 +1,23 @@
 #!/bin/bash
 set -e
 
-jshint openwisp_notifications/static/openwisp-notifications/js/*.js
-stylelint "openwisp_notifications/static/openwisp-notifications/css/*.css"
+jshint immunity_notifications/static/immunity-notifications/js/*.js
+stylelint "immunity_notifications/static/immunity-notifications/css/*.css"
 
-openwisp-qa-check \
+immunity-qa-check \
         --csslinter \
         --jslinter \
-        --migration-path "./openwisp_notifications/migrations/" \
-        --migration-module "openwisp_notifications"
+        --migration-path "./immunity_notifications/migrations/" \
+        --migration-module "immunity_notifications"
 
 echo ''
 echo 'Running checks for SAMPLE_APP'
-SAMPLE_APP=1 openwisp-qa-check \
+SAMPLE_APP=1 immunity-qa-check \
     --skip-isort \
     --skip-flake8 \
     --skip-checkmigrations \
     --skip-checkendline \
     --skip-checkcommit \
     --skip-black \
-    --migration-path "./tests/openwisp2/sample_notifications/migrations/" \
+    --migration-path "./tests/immunity2/sample_notifications/migrations/" \
     --migration-module "sample_notifications"

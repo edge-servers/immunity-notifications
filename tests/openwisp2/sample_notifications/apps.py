@@ -1,14 +1,14 @@
 from django.db.models.signals import post_save
 from swapper import load_model
 
-from openwisp_notifications.apps import OpenwispNotificationsConfig
-from openwisp_notifications.types import register_notification_type
+from immunity_notifications.apps import ImmunityNotificationsConfig
+from immunity_notifications.types import register_notification_type
 
 from .signals import test_app_name_changed
 
 
-class SampleNotificationsConfig(OpenwispNotificationsConfig):
-    name = 'openwisp2.sample_notifications'
+class SampleNotificationsConfig(ImmunityNotificationsConfig):
+    name = 'immunity2.sample_notifications'
     label = 'sample_notifications'
     verbose_name = 'Notifications (custom)'
 
@@ -30,9 +30,9 @@ class SampleNotificationsConfig(OpenwispNotificationsConfig):
         )
 
     def connect_receivers(self):
-        from openwisp_notifications.handlers import register_notification_cache_update
+        from immunity_notifications.handlers import register_notification_cache_update
 
-        Organization = load_model('openwisp_users', 'Organization')
+        Organization = load_model('immunity_users', 'Organization')
         from .models import TestApp
 
         register_notification_cache_update(
@@ -45,4 +45,4 @@ class SampleNotificationsConfig(OpenwispNotificationsConfig):
         )
 
 
-del OpenwispNotificationsConfig
+del ImmunityNotificationsConfig

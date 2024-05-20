@@ -2,25 +2,25 @@
 You don't need to have this file unless you plan to modify the API views as well.
 """
 
-from openwisp_notifications.api.views import (
+from immunity_notifications.api.views import (
     IgnoreObjectNotificationListView as BaseIgnoreObjectNotificationListView,
 )
-from openwisp_notifications.api.views import (
+from immunity_notifications.api.views import (
     IgnoreObjectNotificationView as BaseIgnoreObjectNotificationView,
 )
-from openwisp_notifications.api.views import (
+from immunity_notifications.api.views import (
     NotificationDetailView as BaseNotificationDetailView,
 )
-from openwisp_notifications.api.views import (
+from immunity_notifications.api.views import (
     NotificationListView as BaseNotificationListView,
 )
-from openwisp_notifications.api.views import (
+from immunity_notifications.api.views import (
     NotificationReadAllView as BaseNotificationReadAllView,
 )
-from openwisp_notifications.api.views import (
+from immunity_notifications.api.views import (
     NotificationSettingListView as BaseNotificationSettingListView,
 )
-from openwisp_notifications.api.views import (
+from immunity_notifications.api.views import (
     NotificationSettingView as BaseNotificationSettingView,
 )
 

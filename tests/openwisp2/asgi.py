@@ -3,7 +3,7 @@ import os
 from channels.auth import AuthMiddlewareStack
 from channels.routing import ProtocolTypeRouter, URLRouter
 
-from openwisp_notifications.websockets.routing import get_routes
+from immunity_notifications.websockets.routing import get_routes
 
 if os.environ.get('SAMPLE_APP', False):
     # Load custom routes:
@@ -15,7 +15,7 @@ if os.environ.get('SAMPLE_APP', False):
         {'websocket': AuthMiddlewareStack(URLRouter(get_routes(consumers)))}
     )
 else:
-    # Load openwisp_notifications consumers:
+    # Load immunity_notifications consumers:
     # This can be used when you are extending the app but not making
     # any changes in the web socket consumer.
     application = ProtocolTypeRouter(

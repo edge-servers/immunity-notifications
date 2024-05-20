@@ -10,9 +10,9 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('openwisp_users', '0007_unique_email'),
+        ('immunity_users', '0007_unique_email'),
         ('sample_notifications', '0001_initial'),
-        swapper.dependency('openwisp_users', 'Organization'),
+        swapper.dependency('immunity_users', 'Organization'),
     ]
 
     operations = [
@@ -33,7 +33,7 @@ class Migration(migrations.Migration):
                     'organization',
                     models.ForeignKey(
                         on_delete=django.db.models.deletion.CASCADE,
-                        to=swapper.get_model_name('openwisp_users', 'Organization'),
+                        to=swapper.get_model_name('immunity_users', 'Organization'),
                     ),
                 ),
             ],

@@ -1,22 +1,22 @@
 # isort:skip_file
 from django.db import models
 from django.core.exceptions import ObjectDoesNotExist
-from openwisp_notifications.base.models import (
+from immunity_notifications.base.models import (
     AbstractNotification,
     AbstractNotificationSetting,
     AbstractIgnoreObjectNotification,
 )
 
-# Only for testing openwisp_notifications
+# Only for testing immunity_notifications
 
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils.translation import gettext_lazy as _
 from swapper import get_model_name
 
-from openwisp_notifications.signals import notify
+from immunity_notifications.signals import notify
 
-from openwisp_utils.base import UUIDModel
+from immunity_utils.base import UUIDModel
 
 from .signals import test_app_name_changed
 
@@ -47,7 +47,7 @@ class IgnoreObjectNotification(DetailsModel, AbstractIgnoreObjectNotification):
 class TestApp(UUIDModel):
     name = models.CharField(max_length=50)
     organization = models.ForeignKey(
-        get_model_name('openwisp_users', 'Organization'),
+        get_model_name('immunity_users', 'Organization'),
         on_delete=models.CASCADE,
     )
 

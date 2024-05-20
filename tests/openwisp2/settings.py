@@ -13,7 +13,7 @@ INTERNAL_IPS = ['127.0.0.1']
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'openwisp_notifications.db'),
+        'NAME': os.path.join(BASE_DIR, 'immunity_notifications.db'),
     }
 }
 
@@ -31,12 +31,12 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'django_filters',
-    'openwisp_users',
+    'immunity_users',
     # notifications module
-    'openwisp_notifications',
-    # add openwisp theme
+    'immunity_notifications',
+    # add immunity theme
     # (must be loaded here)
-    'openwisp_utils.admin_theme',
+    'immunity_utils.admin_theme',
     # admin
     'admin_auto_filters',
     'django.contrib.admin',
@@ -53,10 +53,10 @@ INSTALLED_APPS = [
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'openwisp_utils.staticfiles.DependencyFinder',
+    'immunity_utils.staticfiles.DependencyFinder',
 ]
 
-AUTH_USER_MODEL = 'openwisp_users.User'
+AUTH_USER_MODEL = 'immunity_users.User'
 SITE_ID = 1
 
 MIDDLEWARE = [
@@ -70,7 +70,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'openwisp2.urls'
+ROOT_URLCONF = 'immunity2.urls'
 
 TIME_ZONE = 'Europe/Rome'
 LANGUAGE_CODE = 'en-gb'
@@ -92,16 +92,16 @@ TEMPLATES = [
             'loaders': [
                 'django.template.loaders.filesystem.Loader',
                 'django.template.loaders.app_directories.Loader',
-                'openwisp_utils.loaders.DependencyLoader',
+                'immunity_utils.loaders.DependencyLoader',
             ],
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'openwisp_utils.admin_theme.context_processor.menu_groups',
-                'openwisp_utils.admin_theme.context_processor.admin_theme_settings',
-                'openwisp_notifications.context_processors.notification_api_settings',
+                'immunity_utils.admin_theme.context_processor.menu_groups',
+                'immunity_utils.admin_theme.context_processor.admin_theme_settings',
+                'immunity_notifications.context_processors.notification_api_settings',
             ],
         },
     },
@@ -117,7 +117,7 @@ CACHES = {
     }
 }
 
-ASGI_APPLICATION = 'openwisp2.asgi.application'
+ASGI_APPLICATION = 'immunity2.asgi.application'
 
 if TESTING:
     CHANNEL_LAYERS = {
@@ -177,7 +177,7 @@ CELERY_BROKER_TRANSPORT_OPTIONS = {
 
 CELERY_BEAT_SCHEDULE = {
     'delete_old_notifications': {
-        'task': 'openwisp_notifications.tasks.delete_old_notifications',
+        'task': 'immunity_notifications.tasks.delete_old_notifications',
         'schedule': timedelta(days=1),
         'args': (90,),
     },
@@ -187,19 +187,19 @@ ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = False
 OPENWISP_ADMIN_SHOW_USERLINKS_BLOCK = True
 OPENWISP_API_DOCS = True
 OPENWISP_USERS_AUTH_API = True
-OPENWISP_NOTIFICATIONS_IGNORE_ENABLED_ADMIN = ['openwisp_users.admin.OrganizationAdmin']
-TEST_RUNNER = 'openwisp_utils.tests.TimeLoggingTestRunner'
+OPENWISP_NOTIFICATIONS_IGNORE_ENABLED_ADMIN = ['immunity_users.admin.OrganizationAdmin']
+TEST_RUNNER = 'immunity_utils.tests.TimeLoggingTestRunner'
 
 # local settings must be imported before test runner otherwise they'll be ignored
 try:
-    from openwisp2.local_settings import *
+    from immunity2.local_settings import *
 except ImportError:
     pass
 
 if os.environ.get('SAMPLE_APP', False):
-    INSTALLED_APPS.remove('openwisp_notifications')
-    EXTENDED_APPS = ['openwisp_notifications']
-    INSTALLED_APPS.append('openwisp2.sample_notifications')
+    INSTALLED_APPS.remove('immunity_notifications')
+    EXTENDED_APPS = ['immunity_notifications']
+    INSTALLED_APPS.append('immunity2.sample_notifications')
     OPENWISP_NOTIFICATIONS_NOTIFICATION_MODEL = 'sample_notifications.Notification'
     OPENWISP_NOTIFICATIONS_NOTIFICATIONSETTING_MODEL = (
         'sample_notifications.NotificationSetting'
@@ -208,7 +208,7 @@ if os.environ.get('SAMPLE_APP', False):
         os.path.join(BASE_DIR, 'sample_notifications', 'templates'),
         os.path.join(
             os.path.dirname(os.path.dirname(BASE_DIR)),
-            'openwisp_notifications',
+            'immunity_notifications',
             'templates',
         ),
     ]
@@ -216,4 +216,4 @@ if os.environ.get('SAMPLE_APP', False):
         'sample_notifications.IgnoreObjectNotification'
     )
     # Celery auto detects tasks only from INSTALLED_APPS
-    CELERY_IMPORTS = ('openwisp_notifications.tasks',)
+    CELERY_IMPORTS = ('immunity_notifications.tasks',)

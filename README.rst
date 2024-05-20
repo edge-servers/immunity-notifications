@@ -1,29 +1,29 @@
 ======================
-OpenWISP Notifications
+Immunity Notifications
 ======================
 
-.. image:: https://github.com/openwisp/openwisp-notifications/workflows/OpenWISP%20CI%20Build/badge.svg?branch=master
-   :target: https://github.com/openwisp/openwisp-notifications/actions?query=workflow%3A%22OpenWISP+CI+Build%22
+.. image:: https://github.com/edge-servers/immunity-notifications/workflows/Immunity%20CI%20Build/badge.svg?branch=master
+   :target: https://github.com/edge-servers/immunity-notifications/actions?query=workflow%3A%22Immunity+CI+Build%22
    :alt: CI build status
 
-.. image:: https://coveralls.io/repos/github/openwisp/openwisp-notifications/badge.svg?branch=master
-   :target: https://coveralls.io/github/openwisp/openwisp-notifications?branch=master
+.. image:: https://coveralls.io/repos/github/immunity/immunity-notifications/badge.svg?branch=master
+   :target: https://coveralls.io/github/immunity/immunity-notifications?branch=master
    :alt: Test Coverage
 
-.. image:: https://img.shields.io/librariesio/github/openwisp/openwisp-notifications
-   :target: https://libraries.io/github/openwisp/openwisp-notifications#repository_dependencies
+.. image:: https://img.shields.io/librariesio/github/immunity/immunity-notifications
+   :target: https://libraries.io/github/immunity/immunity-notifications#repository_dependencies
    :alt: Dependency monitoring
 
 .. image:: https://img.shields.io/gitter/room/nwjs/nw.js.svg
-   :target: https://gitter.im/openwisp/general
+   :target: https://gitter.im/immunity/general
    :alt: chat
 
-.. image:: https://badge.fury.io/py/openwisp-notifications.svg
-   :target: http://badge.fury.io/py/openwisp-notifications
+.. image:: https://badge.fury.io/py/immunity-notifications.svg
+   :target: http://badge.fury.io/py/immunity-notifications
    :alt: Pypi Version
 
-.. image:: https://pepy.tech/badge/openwisp-notifications
-   :target: https://pepy.tech/project/openwisp-notifications
+.. image:: https://pepy.tech/badge/immunity-notifications
+   :target: https://pepy.tech/project/immunity-notifications
    :alt: downloads
 
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
@@ -32,19 +32,19 @@ OpenWISP Notifications
 
 ------------
 
-.. figure:: https://github.com/openwisp/openwisp-notifications/raw/docs/docs/images/notification-demo.gif
+.. figure:: https://github.com/edge-servers/immunity-notifications/raw/docs/docs/images/notification-demo.gif
    :align: center
 
-**OpenWISP Notifications** provides email and web notifications for
-`OpenWISP <http://openwisp.org>`_.
+**Immunity Notifications** provides email and web notifications for
+`Immunity <http://immunity.org>`_.
 
-Its main goal is to allow the other OpenWISP modules to notify users about
+Its main goal is to allow the other Immunity modules to notify users about
 meaningful events that happen in their network.
 
-**For a more complete overview of the OpenWISP modules and architecture**,
+**For a more complete overview of the Immunity modules and architecture**,
 see the
-`OpenWISP Architecture Overview
-<https://openwisp.io/docs/general/architecture.html>`_.
+`Immunity Architecture Overview
+<https://immunity.io/docs/general/architecture.html>`_.
 
 ------------
 
@@ -65,7 +65,7 @@ Available features
 - `User notification preferences <#notification-preferences>`_
 - `Silencing notifications for specific objects temporarily or permanently <#silencing-notifications-for-specific-objects-temporarily-or-permanently>`_
 - `Automatic cleanup of old notifications <#scheduled-deletion-of-notifications>`_
-- `Configurable host for API endpoints <#openwisp_notifications_host>`_
+- `Configurable host for API endpoints <#immunity_notifications_host>`_
 
 Installation instructions
 -------------------------
@@ -77,7 +77,7 @@ Install from pypi:
 
 .. code-block:: shell
 
-    pip install openwisp-notifications
+    pip install immunity-notifications
 
 Install development version
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -86,13 +86,13 @@ Install tarball:
 
 .. code-block:: shell
 
-    pip install https://github.com/openwisp/openwisp-notifications/tarball/master
+    pip install https://github.com/edge-servers/immunity-notifications/tarball/master
 
 Alternatively, you can install via pip using git:
 
 .. code-block:: shell
 
-    pip install -e git+git://github.com/openwisp/openwisp-notifications#egg=openwisp_notifications
+    pip install -e git+git://github.com/immunity/immunity-notifications#egg=immunity_notifications
 
 Installing for development
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -115,13 +115,13 @@ Fork and clone the forked repository:
 
 .. code-block:: shell
 
-    git clone git://github.com/<your_fork>/openwisp-notifications
+    git clone git://github.com/<your_fork>/immunity-notifications
 
 Navigate into the cloned repository:
 
 .. code-block:: shell
 
-    cd openwisp-notifications/
+    cd immunity-notifications/
 
 Setup and activate a virtual-environment. (we'll be using  `virtualenv <https://pypi.org/project/virtualenv/>`_)
 
@@ -171,7 +171,7 @@ Run celery  worker (separate terminal window is needed):
 .. code-block:: shell
 
     # (cd tests)
-    celery -A openwisp2 worker -l info
+    celery -A immunity2 worker -l info
 
 Run tests with:
 
@@ -190,7 +190,7 @@ Run tests with:
     ./runtests.py --exclude skip_prod
 
 When running the last line of the previous example, the environment variable ``SAMPLE_APP`` activates
-the sample app in ``/tests/openwisp2/`` which is a simple django app that extends ``openwisp-notifications``
+the sample app in ``/tests/immunity2/`` which is a simple django app that extends ``immunity-notifications``
 with the sole purpose of testing its extensibility, for more information regarding this concept,
 read the following section.
 
@@ -217,12 +217,12 @@ Setup (integrate into an existing Django project)
         'rest_framework.authtoken',
         'drf_yasg',
         'django_filters',
-        'openwisp_users',
+        'immunity_users',
         # notifications module
-        'openwisp_notifications',
-        # add openwisp theme
+        'immunity_notifications',
+        # add immunity theme
         # (must be loaded here)
-        'openwisp_utils.admin_theme',
+        'immunity_utils.admin_theme',
         # admin
         'admin_auto_filters',
         'django.contrib.admin',
@@ -230,8 +230,8 @@ Setup (integrate into an existing Django project)
         'channels',
     ]
 
-**Note**: ``openwisp_utils.admin_theme`` and ``django.contrib.admin`` should always
-follow ``openwisp_notifications`` in ``INSTALLED_APPS`` as shown in the example above.
+**Note**: ``immunity_utils.admin_theme`` and ``django.contrib.admin`` should always
+follow ``immunity_notifications`` in ``INSTALLED_APPS`` as shown in the example above.
 It might result in undesired behavior otherwise, e.g. notification bell not being
 shown on admin site.
 
@@ -246,7 +246,7 @@ Add ``notification_api_settings`` context processor:
                 # ...
                 'context_processors': [
                     # ...
-                    'openwisp_notifications.context_processors.notification_api_settings',
+                    'immunity_notifications.context_processors.notification_api_settings',
                     # ...
                 ],
             },
@@ -263,8 +263,8 @@ Add ``notification_api_settings`` context processor:
 
     urlpatterns = [
         path('admin/', admin.site.urls),
-        path('api/v1/', include(('openwisp_users.api.urls', 'users'), namespace='users')),
-        path('', include('openwisp_notifications.urls', namespace='notifications')),
+        path('api/v1/', include(('immunity_users.api.urls', 'users'), namespace='users')),
+        path('', include('immunity_notifications.urls', namespace='notifications')),
     ]
 
     urlpatterns += staticfiles_urlpatterns()
@@ -277,7 +277,7 @@ Add routes for websockets:
     from channels.auth import AuthMiddlewareStack
     from channels.routing import ProtocolTypeRouter, URLRouter
     from django.core.asgi import get_asgi_application
-    from openwisp_notifications.websockets.routing import get_routes
+    from immunity_notifications.websockets.routing import get_routes
 
     application = ProtocolTypeRouter(
         {'websocket': AuthMiddlewareStack(URLRouter(get_routes()))}
@@ -314,7 +314,7 @@ Configure celery beat:
 
     CELERY_BEAT_SCHEDULE = {
         'delete_old_notifications': {
-            'task': 'openwisp_notifications.tasks.delete_old_notifications',
+            'task': 'immunity_notifications.tasks.delete_old_notifications',
             'schedule': timedelta(days=1),
             'args': (90,),
         },
@@ -376,10 +376,10 @@ Notifications can be created using the ``notify`` signal. Eg:
     from django.contrib.auth import get_user_model
     from swapper import load_model
 
-    from openwisp_notifications.signals import notify
+    from immunity_notifications.signals import notify
 
     User = get_user_model()
-    Group = load_model('openwisp_users', 'Group')
+    Group = load_model('immunity_users', 'Group')
     admin = User.objects.get(email='admin@admin.com')
     operators = Group.objects.get(name='Operator')
 
@@ -415,7 +415,7 @@ The complete syntax for ``notify`` is:
         **kwargs
     )
 
-**Note**: Since ``openwisp-notifications`` uses ``django-notifications`` under the hood, usage of the
+**Note**: Since ``immunity-notifications`` uses ``django-notifications`` under the hood, usage of the
 ``notify signal`` has been kept unaffected to maintain consistency with ``django-notifications``.
 You can learn more about accepted parameters from `django-notifications documentation
 <https://github.com/django-notifications/django-notifications#generating-notifications>`_.
@@ -446,14 +446,14 @@ Additional ``notify`` keyword arguments
 Web Notifications
 -----------------
 
-*Openwisp Notifications* send a web notification to the recipients through
+*Immunity Notifications* send a web notification to the recipients through
 django's admin site. Following are the components which allows browsing
 web notifications:
 
 Notification Widget
 ~~~~~~~~~~~~~~~~~~~
 
-.. figure:: https://github.com/openwisp/openwisp-notifications/raw/docs/docs/images/notification-widget.gif
+.. figure:: https://github.com/edge-servers/immunity-notifications/raw/docs/docs/images/notification-widget.gif
    :align: center
 
 A javascript widget has been added to make consuming notifications easy for users.
@@ -468,7 +468,7 @@ The notification widget provides following features:
 Notification Toasts
 ~~~~~~~~~~~~~~~~~~~
 
-.. figure:: https://github.com/openwisp/openwisp-notifications/raw/docs/docs/images/notification-toast.gif
+.. figure:: https://github.com/edge-servers/immunity-notifications/raw/docs/docs/images/notification-toast.gif
    :align: center
 
 A notification toast delivers notifications at real-time. This allows
@@ -479,17 +479,17 @@ displayed through notification toast.
 Email Notifications
 -------------------
 
-.. figure:: https://github.com/openwisp/openwisp-notifications/raw/docs/docs/images/email-template.png
+.. figure:: https://github.com/edge-servers/immunity-notifications/raw/docs/docs/images/email-template.png
 
-Along with web notifications *OpenWISP Notifications* also sends email notifications
-leveraging the `openwisp-utils send_email feature
-<https://github.com/openwisp/openwisp-utils#openwisp-utils-admin-theme-email-send-email>`_.
+Along with web notifications *Immunity Notifications* also sends email notifications
+leveraging the `immunity-utils send_email feature
+<https://github.com/edge-servers/immunity-utils#immunity-utils-admin-theme-email-send-email>`_.
 
 
 Notification Cache
 ------------------
 
-In a typical OpenWISP installation, ``actor``, ``action_object`` and ``target`` objects are same
+In a typical Immunity installation, ``actor``, ``action_object`` and ``target`` objects are same
 for a number of notifications. To optimize database queries, these objects are cached using
 `Django's cache framework <https://docs.djangoproject.com/en/3.0/topics/cache/>`_.
 The cached values are updated automatically to reflect actual data from database. You can control
@@ -514,7 +514,7 @@ To register a signal you need to include following code in your ``apps.py``.
 
         # Include lines after this inside
         # ready function of you app config class
-        from openwisp_notifications.handlers import register_notification_cache_update
+        from immunity_notifications.handlers import register_notification_cache_update
 
         model = load_model('app_name', 'model_name')
         register_notification_cache_update(model, post_save, dispatch_uid="myapp_mymodel_notification_cache_invalidation")
@@ -527,7 +527,7 @@ value you want but it needs to be unique. For more details read `preventing dupl
 Notification Types
 ------------------
 
-**OpenWISP Notifications** simplifies configuring individual notification by
+**Immunity Notifications** simplifies configuring individual notification by
 using notification types. You can think of a notification type as a template
 for notifications.
 
@@ -595,7 +595,7 @@ from scratch. An example to extend default message template is shown below.
 .. code-block:: django
 
     # In templates/your_notifications/your_message_template.md
-    {% extends 'openwisp_notifications/default_message.md' %}
+    {% extends 'immunity_notifications/default_message.md' %}
     {% block body %}
         [{{ notification.target }}]({{ notification.target_link }}) has malfunctioned.
     {% endblock body %}
@@ -610,8 +610,8 @@ database migrations to create `notification settlings <#notification-preferences
 Registering / Unregistering Notification Types
 ----------------------------------------------
 
-**OpenWISP Notifications** provides registering and unregistering notifications through utility functions
-``openwisp_notifications.types.register_notification_type`` and ``openwisp_notifications.types.unregister_notification_type``.
+**Immunity Notifications** provides registering and unregistering notifications through utility functions
+``immunity_notifications.types.register_notification_type`` and ``immunity_notifications.types.unregister_notification_type``.
 Using these functions you can register or unregister notification types from your code.
 
 register_notification_type
@@ -640,7 +640,7 @@ An example usage has been shown below.
 
 .. code-block:: python
 
-    from openwisp_notifications.types import register_notification_type
+    from immunity_notifications.types import register_notification_type
     from django.contrib.auth import get_user_model
 
     User = get_user_model()
@@ -655,7 +655,7 @@ An example usage has been shown below.
         'web_notification': True,
         'email_notification': True,
         # static URL for the actor object
-        'actor': 'https://openwisp.org/admin/config/device',
+        'actor': 'https://immunity.org/admin/config/device',
         # URL generation using callable for target object
         'target': 'mymodule.target_object_link'
     }
@@ -668,7 +668,7 @@ with same name(not to be confused with ``verbose_name``).
 
 **Note**: You can use ``site`` and ``notification`` variables while defining ``message`` and
 ``email_subject`` configuration of notification type. They refer to objects of
-``django.contrib.sites.models.Site`` and ``openwisp_notifications.models.Notification`` respectively.
+``django.contrib.sites.models.Site`` and ``immunity_notifications.models.Notification`` respectively.
 This allows you to use any of their attributes in your configuration. Similarly to ``message_template``,
 ``message`` property can also be formatted using markdown.
 
@@ -693,7 +693,7 @@ An example usage is shown below.
 
 .. code-block:: python
 
-    from openwisp_notifications.types import unregister_notification_type
+    from immunity_notifications.types import unregister_notification_type
 
     # Unregister previously registered notification type
     unregister_notification_type('custom type')
@@ -713,7 +713,7 @@ Here's how to do it:
 
 .. code-block:: python
 
-    from openwisp_notifications.types import register_notification_type
+    from immunity_notifications.types import register_notification_type
 
     register_notification_type('error_type', {
         'verbose_name': 'Error',
@@ -727,7 +727,7 @@ Then in the application code:
 
 .. code-block:: python
 
-    from openwisp_notifications.signals import notify
+    from immunity_notifications.signals import notify
 
     try:
         operation_which_can_fail()
@@ -744,9 +744,9 @@ unregistered in ``ready`` method of your Django application's ``AppConfig``.
 Notification Preferences
 ------------------------
 
-.. image:: https://github.com/openwisp/openwisp-notifications/raw/docs/docs/images/notification-settings.png
+.. image:: https://github.com/edge-servers/immunity-notifications/raw/docs/docs/images/notification-settings.png
 
-*OpenWISP Notifications* allows users to select their preferred way of receiving notifications.
+*Immunity Notifications* allows users to select their preferred way of receiving notifications.
 Users can choose from web or email notifications. These settings have been categorized
 over notification type and organization, therefore allowing users to only receive notifications
 from selected organization or notification type.
@@ -771,10 +771,10 @@ may be re-created automatically if the system needs it.
 Silencing notifications for specific objects temporarily or permanently
 -----------------------------------------------------------------------
 
-.. image:: https://github.com/openwisp/openwisp-notifications/raw/docs/docs/images/silence-notifications.png
+.. image:: https://github.com/edge-servers/immunity-notifications/raw/docs/docs/images/silence-notifications.png
    :align: center
 
-*OpenWISP Notifications* allows users to silence all notifications generated by
+*Immunity Notifications* allows users to silence all notifications generated by
 specific objects they are not interested in for a desired period of time or even permanently,
 while other users will keep receiving notifications normally.
 
@@ -782,13 +782,13 @@ Using the widget on an object's admin change form, a user can disable all notifi
 generated by that object for a day, week, month or permanently.
 
 **Note**: This feature requires configuring
-`"OPENWISP_NOTIFICATIONS_IGNORE_ENABLED_ADMIN" <#openwisp_notifications_ignore_enabled_admin>`_
+`"OPENWISP_NOTIFICATIONS_IGNORE_ENABLED_ADMIN" <#immunity_notifications_ignore_enabled_admin>`_
 to enable the widget in the admin section of the required models.
 
 Scheduled deletion of notifications
 -----------------------------------
 
-*OpenWISP Notifications* provides a celery task to automatically delete
+*Immunity Notifications* provides a celery task to automatically delete
 notifications older than a pre-configured number of days. In order to run this
 task periodically, you will need to configure ``CELERY_BEAT_SCHEDULE`` setting as shown
 in `setup instructions <#setup-integrate-into-an-existing-django-project>`_.
@@ -803,7 +803,7 @@ then configure ``CELERY_BEAT_SCHEDULE`` as follows:
 
     CELERY_BEAT_SCHEDULE = {
         'delete_old_notifications': {
-            'task': 'openwisp_notifications.tasks.delete_old_notifications',
+            'task': 'immunity_notifications.tasks.delete_old_notifications',
             'schedule': timedelta(days=1),
             'args': (10,), # Here we have defined 10 instead of 90 as shown in setup instructions
         },
@@ -864,8 +864,8 @@ for more information on ``SESSION_COOKIE_DOMAIN`` and ``CSRF_COOKIE_DOMAIN`` set
 +---------+-------------------------------------------------------------------------------------------+
 | type    | ``str``                                                                                   |
 +---------+-------------------------------------------------------------------------------------------+
-| default | `notification_bell.mp3 <https://github.com/openwisp/openwisp-notifications/tree/master/ \ |
-|         | openwisp_notifications/static/openwisp-notifications/audio/notification_bell.mp3>`_       |
+| default | `notification_bell.mp3 <https://github.com/edge-servers/immunity-notifications/tree/master/ \ |
+|         | immunity_notifications/static/immunity-notifications/audio/notification_bell.mp3>`_       |
 +---------+-------------------------------------------------------------------------------------------+
 
 This setting defines notification sound to be played when notification is received
@@ -903,12 +903,12 @@ This setting enables the widget which allows users to
 `silence notifications for specific objects temporarily or permanently. <#silencing-notifications-for-specific-objects-temporarily-or-permanently>`_
 in the change page of the specified ``ModelAdmin`` classes.
 
-E.g., if you want to enable the widget for objects of ``openwisp_users.models.User``
+E.g., if you want to enable the widget for objects of ``immunity_users.models.User``
 model, then configure the setting as following:
 
 .. code-block:: python
 
-    OPENWISP_NOTIFICATIONS_IGNORE_ENABLED_ADMIN = ['openwisp_users.admin.UserAdmin']
+    OPENWISP_NOTIFICATIONS_IGNORE_ENABLED_ADMIN = ['immunity_users.admin.UserAdmin']
 
 ``OPENWISP_NOTIFICATIONS_POPULATE_PREFERENCES_ON_MIGRATE``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -964,7 +964,7 @@ Exceptions
 
 .. code-block:: python
 
-    openwisp_notifications.exceptions.NotificationRenderException
+    immunity_notifications.exceptions.NotificationRenderException
 
 Raised when notification properties(``email`` or ``message``) cannot be rendered from
 concerned *notification type*. It sub-classes ``Exception`` class.
@@ -978,14 +978,14 @@ REST API
 Live documentation
 ~~~~~~~~~~~~~~~~~~
 
-.. image:: https://github.com/openwisp/openwisp-notifications/raw/docs/docs/images/api-docs.png
+.. image:: https://github.com/edge-servers/immunity-notifications/raw/docs/docs/images/api-docs.png
 
 A general live API documentation (following the OpenAPI specification) is available at ``/api/v1/docs/``.
 
 Browsable web interface
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: https://github.com/openwisp/openwisp-notifications/raw/docs/docs/images/api-ui.png
+.. image:: https://github.com/edge-servers/immunity-notifications/raw/docs/docs/images/api-ui.png
 
 Additionally, opening any of the endpoints `listed below <#list-of-endpoints>`_
 directly in the browser will show the `browsable API interface of Django-REST-Framework
@@ -995,8 +995,8 @@ which makes it even easier to find out the details of each endpoint.
 Authentication
 ~~~~~~~~~~~~~~
 
-See openwisp-users: `authenticating with the user token
-<https://github.com/openwisp/openwisp-users#authenticating-with-the-user-token>`_.
+See immunity-users: `authenticating with the user token
+<https://github.com/edge-servers/immunity-users#authenticating-with-the-user-token>`_.
 
 When browsing the API via the `Live documentation <#live-documentation>`_
 or the `Browsable web interface <#browsable-web-interface>`_, you can use
@@ -1180,20 +1180,20 @@ Example usage:
     # cd tests/
     ./manage.py create_notification
 
-Extending openwisp-notifications
+Extending immunity-notifications
 --------------------------------
 
-One of the core values of the OpenWISP project is `Software Reusability <http://openwisp.io/docs/general/values.html#software-reusability-means-long-term-sustainability>`_,
-for this reason *OpenWISP Notifications* provides a set of base classes which can be imported, extended
+One of the core values of the Immunity project is `Software Reusability <http://immunity.io/docs/general/values.html#software-reusability-means-long-term-sustainability>`_,
+for this reason *Immunity Notifications* provides a set of base classes which can be imported, extended
 and reused to create derivative apps.
 
-In order to implement your custom version of *openwisp-notifications*, you need to perform the steps
+In order to implement your custom version of *immunity-notifications*, you need to perform the steps
 described in the rest of this section.
 
-When in doubt, the code in `test project <https://github.com/openwisp/openwisp-notifications/tree/master/tests/openwisp2/>`_
-and `sample_notifications <https://github.com/openwisp/openwisp-notifications/tree/master/tests/openwisp2/sample_notifications/>`_
+When in doubt, the code in `test project <https://github.com/edge-servers/immunity-notifications/tree/master/tests/immunity2/>`_
+and `sample_notifications <https://github.com/edge-servers/immunity-notifications/tree/master/tests/immunity2/sample_notifications/>`_
 will guide you in the correct direction: just replicate and adapt that code to get a basic derivative of
-*openwisp-notifications* working.
+*immunity-notifications* working.
 
 **Premise**: if you plan on using a customized version of this module, we suggest to start with it since
 the beginning, because migrating your data from the default module to your extended version may be time
@@ -1202,8 +1202,8 @@ consuming.
 1. Initialize your custom module
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The first thing you need to do in order to extend *openwisp-notifications* is create a new django app which
-will contain your custom version of that *openwisp-notifications* app.
+The first thing you need to do in order to extend *immunity-notifications* is create a new django app which
+will contain your custom version of that *immunity-notifications* app.
 
 A django app is nothing more than a `python package <https://docs.python.org/3/tutorial/modules.html#packages>`_
 (a directory of python scripts), in the following examples we'll call this django app as ``mynotifications``
@@ -1218,27 +1218,27 @@ Keep in mind that the command mentioned above must be called from a directory wh
 the result into your project.
 
 Now you need to add ``mynotifications`` to ``INSTALLED_APPS`` in your ``settings.py``, ensuring also that
-``openwisp_notifications`` has been removed:
+``immunity_notifications`` has been removed:
 
 .. code-block:: python
 
     INSTALLED_APPS = [
         # ... other apps ...
-        # 'openwisp_notifications',        <-- comment out or delete this line
+        # 'immunity_notifications',        <-- comment out or delete this line
         'mynotifications',
     ]
 
 For more information about how to work with django projects and django apps, please refer to the
 `django documentation <https://docs.djangoproject.com/en/dev/intro/tutorial01/>`_.
 
-2. Install ``openwisp-notifications``
+2. Install ``immunity-notifications``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Install (and add to the requirement of your project) *openwisp-notifications*:
+Install (and add to the requirement of your project) *immunity-notifications*:
 
 .. code-block:: shell
 
-    pip install -U https://github.com/openwisp/openwisp-notifications/tarball/master
+    pip install -U https://github.com/edge-servers/immunity-notifications/tarball/master
 
 3. Add ``EXTENDED_APPS``
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1247,25 +1247,25 @@ Add the following to your ``settings.py``:
 
 .. code-block:: python
 
-    EXTENDED_APPS = ['openwisp_notifications']
+    EXTENDED_APPS = ['immunity_notifications']
 
-4. Add ``openwisp_utils.staticfiles.DependencyFinder``
+4. Add ``immunity_utils.staticfiles.DependencyFinder``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Add ``openwisp_utils.staticfiles.DependencyFinder`` to ``STATICFILES_FINDERS`` in your ``settings.py``:
+Add ``immunity_utils.staticfiles.DependencyFinder`` to ``STATICFILES_FINDERS`` in your ``settings.py``:
 
 .. code-block:: python
 
     STATICFILES_FINDERS = [
         'django.contrib.staticfiles.finders.FileSystemFinder',
         'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-        'openwisp_utils.staticfiles.DependencyFinder',
+        'immunity_utils.staticfiles.DependencyFinder',
     ]
 
-5. Add ``openwisp_utils.loaders.DependencyLoader``
+5. Add ``immunity_utils.loaders.DependencyLoader``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Add ``openwisp_utils.loaders.DependencyLoader`` to ``TEMPLATES`` in your ``settings.py``:
+Add ``immunity_utils.loaders.DependencyLoader`` to ``TEMPLATES`` in your ``settings.py``:
 
 .. code-block:: python
 
@@ -1276,7 +1276,7 @@ Add ``openwisp_utils.loaders.DependencyLoader`` to ``TEMPLATES`` in your ``setti
                 'loaders': [
                     'django.template.loaders.filesystem.Loader',
                     'django.template.loaders.app_directories.Loader',
-                    'openwisp_utils.loaders.DependencyLoader',
+                    'immunity_utils.loaders.DependencyLoader',
                 ],
                 'context_processors': [
                     'django.template.context_processors.debug',
@@ -1293,8 +1293,8 @@ Add ``openwisp_utils.loaders.DependencyLoader`` to ``TEMPLATES`` in your ``setti
 
 Please refer to the following files in the sample app of the test project:
 
-- `sample_notifications/__init__.py <https://github.com/openwisp/openwisp-notifications/blob/master/tests/openwisp2/sample_notifications/__init__.py>`_.
-- `sample_notifications/apps.py <https://github.com/openwisp/openwisp-notifications/blob/master/tests/openwisp2/sample_notifications/apps.py>`_.
+- `sample_notifications/__init__.py <https://github.com/edge-servers/immunity-notifications/blob/master/tests/immunity2/sample_notifications/__init__.py>`_.
+- `sample_notifications/apps.py <https://github.com/edge-servers/immunity-notifications/blob/master/tests/immunity2/sample_notifications/apps.py>`_.
 
 For more information regarding the concept of ``AppConfig`` please refer to the
 `"Applications" section in the django documentation <https://docs.djangoproject.com/en/dev/ref/applications/>`_.
@@ -1303,7 +1303,7 @@ For more information regarding the concept of ``AppConfig`` please refer to the
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 For the purpose of showing an example, we added a simple "details" field to the
-`models of the sample app in the test project <https://github.com/openwisp/openwisp-notifications/blob/master/tests/openwisp2/sample_notifications/models.py>`_.
+`models of the sample app in the test project <https://github.com/edge-servers/immunity-notifications/blob/master/tests/immunity2/sample_notifications/models.py>`_.
 
 You can add fields in a similar way in your ``models.py`` file.
 
@@ -1336,7 +1336,7 @@ For more information, refer to the
 10. Create your custom admin
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Refer to the `admin.py file of the sample app <https://github.com/openwisp/openwisp-notifications/tests/openwisp2/sample_firmware_upgrader/admin.py>`_.
+Refer to the `admin.py file of the sample app <https://github.com/edge-servers/immunity-notifications/tests/immunity2/sample_firmware_upgrader/admin.py>`_.
 
 To introduce changes to the admin, you can do it in two main ways which are described below.
 
@@ -1352,7 +1352,7 @@ For example:
 
 .. code-block:: python
 
-    from openwisp_notifications.admin import NotificationSettingInline
+    from immunity_notifications.admin import NotificationSettingInline
 
     NotificationSettingInline.list_display.insert(1, 'my_custom_field')
     NotificationSettingInline.ordering = ['-my_custom_field']
@@ -1366,10 +1366,10 @@ monkey patching, you can proceed as follows:
 .. code-block:: python
 
     from django.contrib import admin
-    from openwisp_notifications.admin import (
+    from immunity_notifications.admin import (
         NotificationSettingInline as BaseNotificationSettingInline,
     )
-    from openwisp_notifications.swapper import load_model
+    from immunity_notifications.swapper import load_model
 
     NotificationSetting = load_model('NotificationSetting')
 
@@ -1385,7 +1385,7 @@ monkey patching, you can proceed as follows:
 11. Create root URL configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Please refer to the `urls.py <https://github.com/openwisp/openwisp-notifications/blob/master/tests/openwisp2/urls.py>`_
+Please refer to the `urls.py <https://github.com/edge-servers/immunity-notifications/blob/master/tests/immunity2/urls.py>`_
 file in the test project.
 
 For more information about URL configuration in django, please refer to the
@@ -1394,7 +1394,7 @@ For more information about URL configuration in django, please refer to the
 12. Create root routing configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Please refer to the `routing.py <https://github.com/openwisp/openwisp-notifications/blob/master/tests/openwisp2/routing.py>`_
+Please refer to the `routing.py <https://github.com/edge-servers/immunity-notifications/blob/master/tests/immunity2/routing.py>`_
 file in the test project.
 
 For more information about URL configuration in django, please refer to the
@@ -1403,7 +1403,7 @@ For more information about URL configuration in django, please refer to the
 13. Create celery.py
 ~~~~~~~~~~~~~~~~~~~~
 
-Please refer to the `celery.py <https://github.com/openwisp/openwisp-notifications/blob/master/tests/openwisp2/celery.py>`_
+Please refer to the `celery.py <https://github.com/edge-servers/immunity-notifications/blob/master/tests/immunity2/celery.py>`_
 file in the test project.
 
 For more information about the usage of celery in django, please refer to the
@@ -1412,18 +1412,18 @@ For more information about the usage of celery in django, please refer to the
 14. Import Celery Tasks
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Add the following in your settings.py to import celery tasks from ``openwisp_notifications`` app.
+Add the following in your settings.py to import celery tasks from ``immunity_notifications`` app.
 
 .. code-block:: python
 
-    CELERY_IMPORTS = ('openwisp_notifications.tasks',)
+    CELERY_IMPORTS = ('immunity_notifications.tasks',)
 
 15. Register Template Tags
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you need to use template tags of *openwisp_notifications*, you will need to register as shown in
+If you need to use template tags of *immunity_notifications*, you will need to register as shown in
 `"templatetags/notification_tags.py" of sample_notifications
-<https://github.com/openwisp/openwisp-notifications/blob/master/tests/openwisp2/sample_notifications/templatetags/notification_tags.py>`_.
+<https://github.com/edge-servers/immunity-notifications/blob/master/tests/immunity2/sample_notifications/templatetags/notification_tags.py>`_.
 
 For more information about template tags in django, please refer to the
 `"Custom template tags and filters" section in the django documentation <https://docs.djangoproject.com/en/dev/topics/http/urls/>`_.
@@ -1434,10 +1434,10 @@ For more information about template tags in django, please refer to the
 You can register notification types as shown in the `section for registering notification types <#register_notification_type>`_.
 
 A reference for registering a notification type is also provided in
-`sample_notifications/apps.py <https://github.com/openwisp/openwisp-notifications/blob/master/tests/openwisp2/sample_notifications/apps.py>`_.
+`sample_notifications/apps.py <https://github.com/edge-servers/immunity-notifications/blob/master/tests/immunity2/sample_notifications/apps.py>`_.
 The registered notification type of ``sample_notifications`` app is used for creating notifications
 when an object of ``TestApp`` model is created. You can use
-`sample_notifications/models.py <https://github.com/openwisp/openwisp-notifications/blob/master/tests/openwisp2/sample_notifications/models.py>`_
+`sample_notifications/models.py <https://github.com/edge-servers/immunity-notifications/blob/master/tests/immunity2/sample_notifications/models.py>`_
 as reference for your implementation.
 
 17. Import the automated tests
@@ -1445,13 +1445,13 @@ as reference for your implementation.
 
 When developing a custom application based on this module, it's a good idea to import and run the base tests
 too, so that you can be sure the changes you're introducing are not breaking some of the existing feature
-of openwisp-notifications.
+of immunity-notifications.
 
 In case you need to add breaking changes, you can overwrite the tests defined in the base classes to test
 your own behavior.
 
 See the `tests of the sample_notifications
-<https://github.com/openwisp/openwisp-notifications/blob/master/tests/openwisp2/sample_notifications/tests.py>`_
+<https://github.com/edge-servers/immunity-notifications/blob/master/tests/immunity2/sample_notifications/tests.py>`_
 to find out how to do this.
 
 **Note**: Some tests will fail if ``templatetags`` and ``admin/base.html`` are not configured properly.
@@ -1466,10 +1466,10 @@ API views
 #########
 
 The API view classes can be extended into other django applications as well. Note
-that it is not required for extending openwisp-notifications to your app and this change
+that it is not required for extending immunity-notifications to your app and this change
 is required only if you plan to make changes to the API views.
 
-Create a view file as done in `sample_notifications/views.py <https://github.com/openwisp/openwisp-notifications/blob/master/tests/openwisp2/sample_notifications/views.py>`_
+Create a view file as done in `sample_notifications/views.py <https://github.com/edge-servers/immunity-notifications/blob/master/tests/immunity2/sample_notifications/views.py>`_
 
 For more information regarding Django REST Framework API views, please refer to the
 `"Generic views" section in the Django REST Framework documentation <https://www.django-rest-framework.org/api-guide/generic-views/>`_.
@@ -1478,10 +1478,10 @@ Web Socket Consumers
 ####################
 
 The Web Socket Consumer classes can be extended into other django applications as well. Note
-that it is not required for extending openwisp-notifications to your app and this change
+that it is not required for extending immunity-notifications to your app and this change
 is required only if you plan to make changes to the consumers.
 
-Create a consumer file as done in `sample_notifications/consumers.py <https://github.com/openwisp/openwisp-notifications/blob/master/tests/openwisp2/sample_notifications/consumers.py>`_
+Create a consumer file as done in `sample_notifications/consumers.py <https://github.com/edge-servers/immunity-notifications/blob/master/tests/immunity2/sample_notifications/consumers.py>`_
 
 For more information regarding Channels' Consumers, please refer to the
 `"Consumers" section in the Channels documentation <https://channels.readthedocs.io/en/latest/topics/consumers.html>`_.
@@ -1489,17 +1489,17 @@ For more information regarding Channels' Consumers, please refer to the
 Contributing
 ------------
 
-Please read the `OpenWISP contributing guidelines <http://openwisp.io/docs/developer/contributing.html>`_.
+Please read the `Immunity contributing guidelines <http://immunity.io/docs/developer/contributing.html>`_.
 
 License
 -------
 
-See `LICENSE <https://github.com/openwisp/openwisp-notifications/blob/master/LICENSE>`_.
+See `LICENSE <https://github.com/edge-servers/immunity-notifications/blob/master/LICENSE>`_.
 
 Support
 -------
 
-See `OpenWISP Support Channels <http://openwisp.org/support.html>`_.
+See `Immunity Support Channels <http://immunity.org/support.html>`_.
 
 Attributions
 ------------
@@ -1507,7 +1507,7 @@ Attributions
 Icons
 ~~~~~
 
-`Icons <https://github.com/openwisp/openwisp-notifications/tree/master/openwisp_notifications/static/openwisp-notifications/images/icons/>`_
+`Icons <https://github.com/edge-servers/immunity-notifications/tree/master/immunity_notifications/static/immunity-notifications/images/icons/>`_
 used are taken from `Font Awesome <https://fontawesome.com/>`_ project.
 
 LICENSE: `https://fontawesome.com/license <https://fontawesome.com/license>`_
@@ -1515,7 +1515,7 @@ LICENSE: `https://fontawesome.com/license <https://fontawesome.com/license>`_
 Sound
 ~~~~~
 
-`Notification sound <https://github.com/openwisp/openwisp-notifications/tree/master/openwisp_notifications/static/openwisp-notifications/audio>`_
+`Notification sound <https://github.com/edge-servers/immunity-notifications/tree/master/immunity_notifications/static/immunity-notifications/audio>`_
 is taken from `Notification Sounds <https://notificationsounds.com/>`_.
 
 LICENSE: `Creative Commons Attribution license <https://creativecommons.org/licenses/by/4.0/legalcode>`_

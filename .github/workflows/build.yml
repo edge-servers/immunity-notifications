@@ -1,4 +1,4 @@
-name: OpenWISP CI Build
+name: Immunity CI Build
 
 on:
   push:
@@ -56,7 +56,7 @@ jobs:
       run: |
         pip install -U -r requirements-test.txt
 
-    - name: Install openwisp-notifications
+    - name: Install immunity-notifications
       run: |
         pip install -U -e .
         pip install ${{ matrix.django-version }}

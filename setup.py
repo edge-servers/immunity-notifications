@@ -4,7 +4,7 @@ import sys
 
 from setuptools import find_packages, setup
 
-from openwisp_notifications import get_version
+from immunity_notifications import get_version
 
 
 def get_install_requires():
@@ -40,17 +40,17 @@ if sys.argv[-1] == 'publish':
 
 
 setup(
-    name='openwisp-notifications',
+    name='immunity-notifications',
     version=get_version(),
     license='GPL3',
     author='Gagan Deep',
-    author_email='support@openwisp.io',
-    description='Notifications module of OpenWISP',
+    author_email='support@immunity.io',
+    description='Notifications module of Immunity',
     long_description=open('README.rst').read(),
-    url='http://openwisp.org',
-    download_url='https://github.com/openwisp/openwisp-notifications/releases',
+    url='http://immunity.org',
+    download_url='https://github.com/edge-servers/immunity-notifications/releases',
     platforms=['Platform Independent'],
-    keywords=['django', 'netjson', 'notification', 'openwisp', 'monitoring'],
+    keywords=['django', 'netjson', 'notification', 'immunity', 'monitoring'],
     packages=find_packages(exclude=['tests*', 'docs*']),
     include_package_data=True,
     zip_safe=False,

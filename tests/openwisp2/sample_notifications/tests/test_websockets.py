@@ -1,4 +1,4 @@
-from openwisp_notifications.tests.test_websockets import (
+from immunity_notifications.tests.test_websockets import (
     TestNotificationSockets as BaseTestNotificationSockets,
 )
 

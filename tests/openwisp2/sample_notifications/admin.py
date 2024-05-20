@@ -1,8 +1,8 @@
 # isort:skip_file
-from openwisp_notifications.admin import NotificationSettingInline  # noqa
+from immunity_notifications.admin import NotificationSettingInline  # noqa
 
 
-# Used for testing of openwisp-notifications
+# Used for testing of immunity-notifications
 from django.contrib import admin
 
 from .models import TestApp

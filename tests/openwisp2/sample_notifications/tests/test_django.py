@@ -4,26 +4,26 @@ from django.apps.registry import apps
 from django.contrib.contenttypes.models import ContentType
 from django.core.cache import cache
 
-from openwisp_notifications.swapper import load_model, swapper_load_model
-from openwisp_notifications.tests.test_admin import TestAdmin as BaseTestAdmin
-from openwisp_notifications.tests.test_admin import TestAdminMedia as BaseTestAdminMedia
-from openwisp_notifications.tests.test_api import (
+from immunity_notifications.swapper import load_model, swapper_load_model
+from immunity_notifications.tests.test_admin import TestAdmin as BaseTestAdmin
+from immunity_notifications.tests.test_admin import TestAdminMedia as BaseTestAdminMedia
+from immunity_notifications.tests.test_api import (
     TestNotificationApi as BaseTestNotificationApi,
 )
-from openwisp_notifications.tests.test_ignore_object_notification import (
+from immunity_notifications.tests.test_ignore_object_notification import (
     TestIgnoreObjectNotification as BaseTestIgnoreObjectNotification,
 )
-from openwisp_notifications.tests.test_notification_setting import (
+from immunity_notifications.tests.test_notification_setting import (
     TestNotificationSetting as BaseTestNotificationSetting,
 )
-from openwisp_notifications.tests.test_notifications import (
+from immunity_notifications.tests.test_notifications import (
     TestNotifications as BaseTestNotifications,
 )
-from openwisp_notifications.tests.test_notifications import (
+from immunity_notifications.tests.test_notifications import (
     TestTransactionNotifications as BaseTestTransactionNotifications,
 )
-from openwisp_notifications.tests.test_utils import TestChecks as BaseTestChecks
-from openwisp_notifications.tests.test_utils import (
+from immunity_notifications.tests.test_utils import TestChecks as BaseTestChecks
+from immunity_notifications.tests.test_utils import (
     TestManagementCommands as BaseTestManageCommands,
 )
 
@@ -42,9 +42,9 @@ class TestAdminMedia(BaseTestAdminMedia):
 
 
 class TestNotifications(BaseTestNotifications):
-    # Used only for testing openwisp-notifications
+    # Used only for testing immunity-notifications
     def test_app_object_created_notification(self):
-        OrganizationUser = swapper_load_model('openwisp_users', 'OrganizationUser')
+        OrganizationUser = swapper_load_model('immunity_users', 'OrganizationUser')
 
         org = self._get_org()
         operator = self._get_operator()

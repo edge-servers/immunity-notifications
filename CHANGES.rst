@@ -25,11 +25,11 @@ Bugfixes
 ~~~~~~~~
 
 - Fixed `hardcoded static image URLs
-  <https://github.com/openwisp/openwisp-notifications/issues/243>`_.
+  <https://github.com/edge-servers/immunity-notifications/issues/243>`_.
   These create issues when static files are served using an
   external service (e.g. S3 storage buckets).
 - Fixed `"Organization.DoesNotExist" error on creating
-  a new organization <https://github.com/openwisp/openwisp-notifications/issues/238>`_.
+  a new organization <https://github.com/edge-servers/immunity-notifications/issues/238>`_.
 
 Version 1.0.1 [2022-06-09]
 --------------------------
@@ -38,7 +38,7 @@ Bugfixes
 ~~~~~~~~
 
 - Fixed `handling of the "OPENWISP_NOTIFICATIONS_SOUND" setting
-  <https://github.com/openwisp/openwisp-notifications/issues/239>`_.
+  <https://github.com/edge-servers/immunity-notifications/issues/239>`_.
   The code was not passing the sound file path to the utilities
   of ``django.contrib.staticfiles`` and hence the sound file was
   not loaded properly when using different static storage backend.
@@ -50,7 +50,7 @@ Features
 ~~~~~~~~
 
 - Introduced mechanism to `clear cache on specific signals
-  <https://github.com/openwisp/openwisp-notifications#cache-invalidation>`_
+  <https://github.com/edge-servers/immunity-notifications#cache-invalidation>`_
 
 Changes
 ~~~~~~~
@@ -61,7 +61,7 @@ Backward incompatible changes
 - Removed notification widget and toast template tags:
   the template tags "notification_widget" and "notification_toast" have been
   removed and their HTML is added directly to the admin/base_site.html template
-- Changed the API URL prefix to make it consistent with other OpenWISP modules
+- Changed the API URL prefix to make it consistent with other Immunity modules
 
 Dependencies
 ^^^^^^^^^^^^
@@ -72,18 +72,18 @@ Dependencies
 - Added support for Django 3.2 and 4.0
 - Updated django channels to 3.0.x
 - Upgraded celery to 5.2.x
-- Upgraded openwisp-utils to 1.0.x
+- Upgraded immunity-utils to 1.0.x
 
 Other changes
 ^^^^^^^^^^^^^
 
-- Restyled widget to new OpenWISP theme plus various UI fixes and improvements
+- Restyled widget to new Immunity theme plus various UI fixes and improvements
 - Restyled notification email template
 - When clicking on the mark as read button, the notification widget now
   instantaneously marks notification as read instead of waiting for the
   API response
 - Added ``models`` parameter to ``register_notification_type``
-- Switch to openwisp-utils email template
+- Switch to immunity-utils email template
 - Optimized query for flagging all notification as read via API
 - Added celery time limits to tasks except ``delete_old_notifications``
   (which may take a long time to finish in big installations)
@@ -97,9 +97,9 @@ Bugfixes
 ~~~~~~~~
 
 - Fixed a bug which caused to lose notification preferences of users
-- Fixed extensibility of openwisp-users:
-  removed openwisp-users as a direct dependency from migrations file
-  because it was creating issues when extending openwisp-users
+- Fixed extensibility of immunity-users:
+  removed immunity-users as a direct dependency from migrations file
+  because it was creating issues when extending immunity-users
 - Fixed multiple jquery inclusions in ``base_site.html``
 - Fixed WSS connection error when running on http
 - Fixed creation of notification settings for superuser
@@ -126,8 +126,8 @@ Bugfixes
 Changes
 ~~~~~~~
 
-- [dependencies] Upgraded ``openwisp-utils~=0.7.0`` and
-  ``openwisp-users~=0.5.0``
+- [dependencies] Upgraded ``immunity-utils~=0.7.0`` and
+  ``immunity-users~=0.5.0``
 
 Features
 ~~~~~~~~
@@ -153,7 +153,7 @@ Features
 
 - Added support for Django 3.1
 - Added possibility of `silencing notifications for specific objects \
-  temporarily or permanently <https://github.com/openwisp/openwisp-notifications#silencing-notifications-for-specific-objects-temporarily-or-permanently>`_
+  temporarily or permanently <https://github.com/edge-servers/immunity-notifications#silencing-notifications-for-specific-objects-temporarily-or-permanently>`_
 
 Bugfixes
 ~~~~~~~~
