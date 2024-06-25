@@ -184,10 +184,14 @@ CELERY_BEAT_SCHEDULE = {
 }
 
 ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = False
-OPENWISP_ADMIN_SHOW_USERLINKS_BLOCK = True
-OPENWISP_API_DOCS = True
-OPENWISP_USERS_AUTH_API = True
-OPENWISP_NOTIFICATIONS_IGNORE_ENABLED_ADMIN = ['immunity_users.admin.OrganizationAdmin']
+IMMUNITY
+_ADMIN_SHOW_USERLINKS_BLOCK = True
+IMMUNITY
+_API_DOCS = True
+IMMUNITY
+_USERS_AUTH_API = True
+IMMUNITY
+_NOTIFICATIONS_IGNORE_ENABLED_ADMIN = ['immunity_users.admin.OrganizationAdmin']
 TEST_RUNNER = 'immunity_utils.tests.TimeLoggingTestRunner'
 
 # local settings must be imported before test runner otherwise they'll be ignored
@@ -200,8 +204,10 @@ if os.environ.get('SAMPLE_APP', False):
     INSTALLED_APPS.remove('immunity_notifications')
     EXTENDED_APPS = ['immunity_notifications']
     INSTALLED_APPS.append('immunity2.sample_notifications')
-    OPENWISP_NOTIFICATIONS_NOTIFICATION_MODEL = 'sample_notifications.Notification'
-    OPENWISP_NOTIFICATIONS_NOTIFICATIONSETTING_MODEL = (
+    IMMUNITY
+_NOTIFICATIONS_NOTIFICATION_MODEL = 'sample_notifications.Notification'
+    IMMUNITY
+_NOTIFICATIONS_NOTIFICATIONSETTING_MODEL = (
         'sample_notifications.NotificationSetting'
     )
     TEMPLATES[0]['DIRS'] = [
@@ -212,7 +218,8 @@ if os.environ.get('SAMPLE_APP', False):
             'templates',
         ),
     ]
-    OPENWISP_NOTIFICATIONS_IGNOREOBJECTNOTIFICATION_MODEL = (
+    IMMUNITY
+_NOTIFICATIONS_IGNOREOBJECTNOTIFICATION_MODEL = (
         'sample_notifications.IgnoreObjectNotification'
     )
     # Celery auto detects tasks only from INSTALLED_APPS

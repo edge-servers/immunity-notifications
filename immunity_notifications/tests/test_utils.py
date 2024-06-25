@@ -49,7 +49,8 @@ class TestManagementCommands(TestCase, TestOrganizationMixin):
 class TestChecks(TestCase, TestOrganizationMixin):
     @patch.object(
         app_settings,
-        'OPENWISP_NOTIFICATIONS_HOST',
+        'IMMUNITY
+_NOTIFICATIONS_HOST',
         'https://example.com',
     )
     def test_cors_not_configured(self):
@@ -82,7 +83,8 @@ class TestChecks(TestCase, TestOrganizationMixin):
         with self.subTest('Test setting is not a list'):
             with patch.object(app_settings, 'IGNORE_ENABLED_ADMIN', tuple()):
                 error_message = (
-                    '"OPENWISP_NOTIFICATIONS_IGNORE_ENABLED_ADMIN" should be a list'
+                    '"IMMUNITY
+_NOTIFICATIONS_IGNORE_ENABLED_ADMIN" should be a list'
                 )
                 error = run_check()
                 self.assertIn(error_message, error.hint)
@@ -90,7 +92,8 @@ class TestChecks(TestCase, TestOrganizationMixin):
         with self.subTest('Test setting does not contains dotted path string'):
             with patch.object(app_settings, 'IGNORE_ENABLED_ADMIN', [0]):
                 error_message = (
-                    '"OPENWISP_NOTIFICATIONS_IGNORE_ENABLED_ADMIN" should contain '
+                    '"IMMUNITY
+_NOTIFICATIONS_IGNORE_ENABLED_ADMIN" should contain '
                     'dotted path string to ModelAdmin'
                 )
                 error = run_check()
@@ -101,7 +104,8 @@ class TestChecks(TestCase, TestOrganizationMixin):
             with patch.object(app_settings, 'IGNORE_ENABLED_ADMIN', [path]):
                 error_message = (
                     f'Failed to import "{path}" defined in '
-                    '"OPENWISP_NOTIFICATIONS_IGNORE_ENABLED_ADMIN".'
+                    '"IMMUNITY
+_NOTIFICATIONS_IGNORE_ENABLED_ADMIN".'
                 )
                 error = run_check()
                 self.assertIn(error_message, error.hint)

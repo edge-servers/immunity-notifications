@@ -42,13 +42,16 @@
   {% if request.user.is_authenticated %}
     <script type="text/javascript" src="{% static 'immunity-notifications/js/vendor/reconnecting-websocket.min.js' %}"></script>
     <script type="text/javascript">
-      {% if OPENWISP_NOTIFICATIONS_HOST %}
-        const notificationApiHost = new URL('{{ OPENWISP_NOTIFICATIONS_HOST }}');
+      {% if IMMUNITY
+_NOTIFICATIONS_HOST %}
+        const notificationApiHost = new URL('{{ IMMUNITY
+_NOTIFICATIONS_HOST }}');
       {% else %}
         const notificationApiHost = window.location;
       {% endif %}
       const webSocketProtocol = notificationApiHost.protocol === 'http:' ? 'ws' : 'wss';
-      const notificationSound = new Audio('{{ OPENWISP_NOTIFICATIONS_SOUND | default:"" }}');
+      const notificationSound = new Audio('{{ IMMUNITY
+_NOTIFICATIONS_SOUND | default:"" }}');
       // Create websocket connection
       const notificationSocket = new ReconnectingWebSocket(
           `${webSocketProtocol}://${notificationApiHost.host}/ws/notification/`,

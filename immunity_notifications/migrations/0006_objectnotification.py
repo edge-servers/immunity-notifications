@@ -47,7 +47,8 @@ class Migration(migrations.Migration):
             ],
             options={
                 'abstract': False,
-                'swappable': 'OPENWISP_NOTIFICATIONS_OBJECTNOTIFICATION_MODEL',
+                'swappable': 'IMMUNITY
+_NOTIFICATIONS_OBJECTNOTIFICATION_MODEL',
                 'ordering': ['valid_till'],
             },
         ),

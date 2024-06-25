@@ -218,7 +218,8 @@ class Migration(migrations.Migration):
             options={
                 'ordering': ('-timestamp',),
                 'abstract': False,
-                'swappable': 'OPENWISP_NOTIFICATIONS_NOTIFICATION_MODEL',
+                'swappable': 'IMMUNITY
+_NOTIFICATIONS_NOTIFICATION_MODEL',
                 'index_together': {('recipient', 'unread')},
                 'verbose_name': 'Notification',
                 'verbose_name_plural': 'Notifications',

@@ -129,7 +129,8 @@ class TestAdmin(BaseTestAdmin):
     # For more info, look at TestAdmin.test_default_notification_setting
     @patch.object(
         app_settings,
-        'OPENWISP_NOTIFICATIONS_SOUND',
+        'IMMUNITY
+_NOTIFICATIONS_SOUND',
         '/static/notification.mp3',
     )
     def test_notification_sound_setting(self):
@@ -141,7 +142,8 @@ class TestAdmin(BaseTestAdmin):
 
     @patch.object(
         app_settings,
-        'OPENWISP_NOTIFICATIONS_HOST',
+        'IMMUNITY
+_NOTIFICATIONS_HOST',
         'https://example.com',
     )
     def test_notification_host_setting(self):
@@ -281,7 +283,8 @@ class TestAdminMedia(BaseTestAdmin):
         )
 
     @override_settings(
-        OPENWISP_NOTIFICATIONS_IGNORE_ENABLED_ADMIN=['immunity_users.admin.UserAdmin'],
+        IMMUNITY
+_NOTIFICATIONS_IGNORE_ENABLED_ADMIN=['immunity_users.admin.UserAdmin'],
     )
     def test_object_notification_setting_configured(self):
         _add_object_notification_widget()

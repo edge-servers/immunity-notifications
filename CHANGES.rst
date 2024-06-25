@@ -37,7 +37,8 @@ Version 1.0.1 [2022-06-09]
 Bugfixes
 ~~~~~~~~
 
-- Fixed `handling of the "OPENWISP_NOTIFICATIONS_SOUND" setting
+- Fixed `handling of the "IMMUNITY
+_NOTIFICATIONS_SOUND" setting
   <https://github.com/edge-servers/immunity-notifications/issues/239>`_.
   The code was not passing the sound file path to the utilities
   of ``django.contrib.staticfiles`` and hence the sound file was

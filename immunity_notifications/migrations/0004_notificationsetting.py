@@ -140,7 +140,8 @@ class Migration(migrations.Migration):
                 'verbose_name_plural': 'user notification settings',
                 'ordering': ['organization', 'type'],
                 'abstract': False,
-                'swappable': 'OPENWISP_NOTIFICATIONS_NOTIFICATIONSETTING_MODEL',
+                'swappable': 'IMMUNITY
+_NOTIFICATIONS_NOTIFICATIONSETTING_MODEL',
             },
         ),
         migrations.AddConstraint(

@@ -15,7 +15,8 @@ def _add_object_notification_widget():
     Adds object notification widget on configured ModelAdmins.
     """
     IGNORE_ENABLED_ADMIN = getattr(
-        settings, 'OPENWISP_NOTIFICATIONS_IGNORE_ENABLED_ADMIN', []
+        settings, 'IMMUNITY
+_NOTIFICATIONS_IGNORE_ENABLED_ADMIN', []
     )
     for model_admin_path in IGNORE_ENABLED_ADMIN:
         model_admin_class = import_string(model_admin_path)

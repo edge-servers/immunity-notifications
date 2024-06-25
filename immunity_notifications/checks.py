@@ -9,7 +9,8 @@ from immunity_notifications import settings as app_settings
 @checks.register
 def check_cors_configuration(app_configs, **kwargs):
     errors = []
-    if not app_settings.OPENWISP_NOTIFICATIONS_HOST:
+    if not app_settings.IMMUNITY
+_NOTIFICATIONS_HOST:
         return errors
 
     if not (
@@ -21,7 +22,8 @@ def check_cors_configuration(app_configs, **kwargs):
                 msg='Improperly Configured',
                 hint=(
                     '"django-cors-headers" is either not installed or improperly configured.'
-                    ' CORS configuration is required for using "OPENWISP_NOTIFICATIONS_HOST" settings.'
+                    ' CORS configuration is required for using "IMMUNITY
+_NOTIFICATIONS_HOST" settings.'
                     ' Configure equivalent CORS rules on your server if you are not using'
                     ' "django-cors-headers".'
                 ),
@@ -39,7 +41,8 @@ def check_ow_object_notification_widget_setting(app_configs, **kwargs):
             checks.Warning(
                 msg='Improperly Configured',
                 hint=(
-                    '"OPENWISP_NOTIFICATIONS_IGNORE_ENABLED_ADMIN" should be a list, '
+                    '"IMMUNITY
+_NOTIFICATIONS_IGNORE_ENABLED_ADMIN" should be a list, '
                     f'{type(app_settings.IGNORE_ENABLED_ADMIN)} provided'
                 ),
                 obj='Settings',
@@ -54,7 +57,8 @@ def check_ow_object_notification_widget_setting(app_configs, **kwargs):
                 checks.Error(
                     msg='Improperly Configured',
                     hint=(
-                        '"OPENWISP_NOTIFICATIONS_IGNORE_ENABLED_ADMIN" should contain '
+                        '"IMMUNITY
+_NOTIFICATIONS_IGNORE_ENABLED_ADMIN" should contain '
                         f'dotted path string to ModelAdmin, found {type(path)}'
                     ),
                     obj='Settings',
@@ -71,7 +75,8 @@ def check_ow_object_notification_widget_setting(app_configs, **kwargs):
                     msg='Improperly Configured',
                     hint=(
                         f'Failed to import "{path}" defined in '
-                        '"OPENWISP_NOTIFICATIONS_IGNORE_ENABLED_ADMIN". '
+                        '"IMMUNITY
+_NOTIFICATIONS_IGNORE_ENABLED_ADMIN". '
                         'Make sure you have provided a valid dotted path.'
                     ),
                     obj='Settings',
@@ -84,7 +89,8 @@ def check_ow_object_notification_widget_setting(app_configs, **kwargs):
                     hint=(
                         f'"{path}" does not subclasses '
                         '"django.contrib.admin.ModelAdmin". Only derivatives '
-                        'ModelAdmin can be added in "OPENWISP_NOTIFICATIONS_IGNORE_ENABLED_ADMIN".'
+                        'ModelAdmin can be added in "IMMUNITY
+_NOTIFICATIONS_IGNORE_ENABLED_ADMIN".'
                     ),
                     obj='Settings',
                 )

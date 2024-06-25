@@ -170,7 +170,8 @@ class AbstractNotification(UUIDModel, BaseNotification):
             cache.set(
                 cache_key,
                 obj,
-                timeout=app_settings.OPENWISP_NOTIFICATIONS_CACHE_TIMEOUT,
+                timeout=app_settings.IMMUNITY
+_NOTIFICATIONS_CACHE_TIMEOUT,
             )
         return obj
 
