@@ -1,5 +1,5 @@
 django-notifications-hq~=1.8.2
 channels~=3.0.2
-immunity-users @ https://github.com/edge-servers/immunity-users/tarball/master
-immunity-utils[rest,celery] @ https://github.com/edge-servers/immunity-utils/tarball/master
+immunity-users 
+immunity-utils[rest,celery] 
 markdown~=3.4.3
