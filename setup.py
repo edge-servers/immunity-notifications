@@ -46,6 +46,7 @@ setup(
     author='Gagan Deep',
     author_email='support@immunity.io',
     description='Notifications module of Immunity',
+    long_description_content_type='text/markdown',
     long_description=open('README.rst').read(),
     url='http://immunity.org',
     download_url='https://github.com/edge-servers/immunity-notifications/releases',
